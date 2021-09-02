@@ -6,11 +6,12 @@ import router from './router'
 import store from './store'
 
 import BootstrapVue from 'bootstrap-vue/dist/bootstrap-vue.esm';
+import { IconsPlugin } from 'bootstrap-vue/dist/bootstrap-vue.esm';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 Vue.use(BootstrapVue)
-
+Vue.use(IconsPlugin)
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */
