@@ -1,8 +1,8 @@
 <template>
   <div>
-      <h1>vue counter: {{total}} </h1>
-      <button @click="decrement">decrement </button>
-      <button v-on:click="increment"> increment </button>
+      <h2>vue counter {{total}} </h2>
+      <b-button pill variant='danger' @click="decrement">decrement </b-button>
+      <b-button pill variant='success' v-on:click="increment"> increment </b-button>
   </div>
 </template>
 <script>
