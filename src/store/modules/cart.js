@@ -37,6 +37,9 @@ const actions = {
       }
 
 
+    },
+    emptyCart({commit}){
+      commit('emptyCart')
     }
 }
 
@@ -53,6 +56,9 @@ const mutations = {
   incrementItemQuantity (state, { id }) {
     const cartItem = state.items.find(item => item.id === id)
     cartItem.quantity++
+  },
+  emptyCart(state){
+    state.items = []
   }
 }
 

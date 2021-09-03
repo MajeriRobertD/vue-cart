@@ -12,7 +12,8 @@
 
 </b-navbar>
   <b-modal ok-only hide-footer id="modal-1" title="Your shopping cart">
-    <p class="my-4">Here are your products</p>
+    <p v-if="items.length === 0" class="my-4">Empty cart! <b-icon-emoji-frown> </b-icon-emoji-frown> <br> Go back and add some products!</p>
+    <p v-else class="my-4"><b-icon-emoji-sunglasses> </b-icon-emoji-sunglasses> Here are your products:</p>
     <b-list-group> 
       <b-list-group-item  class="d-flex justify-content-between align-items-center" v-for="item in items" v-bind:key="item.id" >
           ID: {{item.id}}
@@ -23,7 +24,7 @@
          </b-list-group-item>
     </b-list-group>
     <div class="d-flex flex-row-reverse"> 
-     <b-button class="mt-3 ml-2 justify-content-end" variant="success"  @click="$bvModal.hide('modal-1')">Check out</b-button>
+     <b-button class="mt-3 ml-2 justify-content-end" variant="success"  @click="()=>{$bvModal.hide('modal-1'); emptyCart()}">Check out</b-button>
      <b-button class="mt-3 justify-content-end"  @click="$bvModal.hide('modal-1')">Cancel</b-button>
     </div>
   </b-modal>
@@ -31,7 +32,7 @@
 </template>
 
 <script>
-import { mapGetters, mapState } from 'vuex'
+import { mapActions, mapGetters, mapState } from 'vuex'
 export default {
    computed: {
     ...mapState({
@@ -42,6 +43,7 @@ export default {
     })
   },
   methods: {
+    ...mapActions('cart',['emptyCart']),
     goHome(){
 
       this.$router.push('/').catch(err => {

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <main>
       <h2>Available products</h2>
         <b-container class="mt-4">
           <b-row v-for="(row, index) in groupedProducts" v-bind:key="index">
@@ -30,7 +30,7 @@
 
         </b-container>
         
-  </div>
+  </main>
 </template>
 
 <script>
