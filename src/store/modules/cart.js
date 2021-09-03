@@ -1,11 +1,19 @@
 /* eslint-disable */
 const state = () => ({
-    counter:0
+    counter:0,
+    items:[]
 })
 
 const getters = {
     cartQuantity: (state) => {
-        return state.counter
+      let quantity = 0
+      for(let item of state.items){
+        quantity+= item.quantity
+      }
+      return quantity
+    },
+    cartProducts: (state) => {
+        return state.items
     }
 }
 
@@ -16,6 +24,19 @@ const actions = {
     },
     decrement({commit}){
       commit("decrementQuantity")
+    },
+    addProductToCart({state, commit}, id){
+
+      const cartItem = state.items.find(item => item.id === id)
+      if(!cartItem){
+        
+        commit('pushProductToCart', {id:id})
+      
+      }else{
+        commit('incrementItemQuantity', cartItem)
+      }
+
+
     }
 }
 
@@ -25,7 +46,14 @@ const mutations = {
   },
   decrementQuantity(state) {
     state.counter--
-}
+  },
+  pushProductToCart(state, {id}){
+    state.items.push({id, quantity:1})
+  },
+  incrementItemQuantity (state, { id }) {
+    const cartItem = state.items.find(item => item.id === id)
+    cartItem.quantity++
+  }
 }
 
 export default {
