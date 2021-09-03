@@ -1,8 +1,6 @@
 <template>
   <div>
-      <h2>Press some buttons</h2>
-      <b-button pill variant='danger' @click="decrement"><b-icon-arrow-down></b-icon-arrow-down>decrement </b-button>
-      <b-button pill variant='success' v-on:click="increment"><b-icon-arrow-up></b-icon-arrow-up> increment </b-button>
+      <h2>Available products</h2>
   </div>
 </template>
 
@@ -17,6 +15,6 @@ export default {
     })
   },
   methods: mapActions('cart', ['increment', 'decrement']),
-  name: 'LandingPage'
+  name: 'ProductsPage'
 }
 </script>
